@@ -1,0 +1,59 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-I/home/marcin/lib/drogon/include",
+      "-I/home/marcin/lib/json-schema-validator/include",
+      "-pthread",
+      "-O3",
+      "-c",
+      "-o",
+      "bin/Views.o",
+      "src/Views.cc"
+    ],
+    "directory": "/home/marcin/projects/unbox-api",
+    "file": "/home/marcin/projects/unbox-api/src/Views.cc",
+    "output": "/home/marcin/projects/unbox-api/bin/Views.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-I/home/marcin/lib/drogon/include",
+      "-I/home/marcin/lib/json-schema-validator/include",
+      "-pthread",
+      "-O3",
+      "-c",
+      "-o",
+      "bin/controllers/PatchUserController.o",
+      "src/controllers/PatchUserController.cc"
+    ],
+    "directory": "/home/marcin/projects/unbox-api",
+    "file": "/home/marcin/projects/unbox-api/src/controllers/PatchUserController.cc",
+    "output": "/home/marcin/projects/unbox-api/bin/controllers/PatchUserController.o"
+  },
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++20",
+      "-Wall",
+      "-Wextra",
+      "-I/home/marcin/lib/drogon/include",
+      "-I/home/marcin/lib/json-schema-validator/include",
+      "-pthread",
+      "-O3",
+      "-c",
+      "-o",
+      "bin/repositories/UserRepository.o",
+      "src/repositories/UserRepository.cc"
+    ],
+    "directory": "/home/marcin/projects/unbox-api",
+    "file": "/home/marcin/projects/unbox-api/src/repositories/UserRepository.cc",
+    "output": "/home/marcin/projects/unbox-api/bin/repositories/UserRepository.o"
+  }
+]
