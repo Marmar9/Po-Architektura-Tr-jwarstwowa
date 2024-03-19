@@ -1,4 +1,4 @@
-#include "../../src/controllers/GetUsersController.hpp"
+#include "../../src/controllers/PostUserController.hpp"
 #include "gmock/gmock.h"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
@@ -7,7 +7,6 @@
 class MockUserRepository : public UserRepository {
 public:
   MOCK_METHOD0(UserRepository, void());
-
   MOCK_METHOD1(deleteUser, void(int));
   MOCK_METHOD1(addUser, void(const User &));
   MOCK_METHOD2(updateUser, void(int, const User &));
@@ -15,29 +14,33 @@ public:
   MOCK_CONST_METHOD0(getUsers, std::vector<User>());
 };
 
-class TestGetUsersController : public ::testing::Test {
+class TestPostUserController : public ::testing::Test {
 protected:
-  TestGetUsersController()
+  TestPostUserController()
       : controller(std::make_shared<MockUserRepository>()){};
 
   void SetUp() override {
     repository = std::make_shared<MockUserRepository>();
 
-    EXPECT_CALL(*repository, getUsers()).Times(1);
+    User newUser{1, "Jane", "Doe", 35, "user"};
 
-    controller = GetUsersController(repository);
+    EXPECT_CALL(*repository, addUser(newUser)).Times(1);
+
+    controller = PostUserController(repository);
   }
 
   void TearDown() override {
     ::testing::Mock::VerifyAndClearExpectations(repository.get());
   }
   std::shared_ptr<MockUserRepository> repository;
-  GetUsersController controller;
+  PostUserController controller;
 };
 
-TEST_F(TestGetUsersController, GetUsers) {
+TEST_F(TestPostUserController, PatchUser) {
 
-  ASSERT_EQ(controller.getUsers().size(), 1);
+  User newUser{-1, "Jane", "Doe", 35, "user"};
+
+  controller.addUser(newUser);
 }
 
 int main(int argc, char **argv) {

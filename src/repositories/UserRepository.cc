@@ -4,15 +4,15 @@
 #include <vector>
 UserRepository::UserRepository() {
 
-  // for (int i = 0; i < 10; ++i) {
-  //   User newUser;
-  //   newUser.id = i + 1;
-  //   newUser.firstName = "Firstnamaa" + std::to_string(i);
-  //   newUser.lastName = "Last" + std::to_string(i);
-  //   newUser.age = 1990 + i;
-  //   newUser.group = "Group" + std::to_string(i);
-  //   this->usersArray.push_back(newUser);
-  // }
+  for (int i = 0; i < 1; ++i) {
+    User newUser;
+    newUser.id = i + 1;
+    newUser.firstName = "Firstnamaa" + std::to_string(i);
+    newUser.lastName = "Last" + std::to_string(i);
+    newUser.age = 1990 + i;
+    newUser.group = "Group" + std::to_string(i);
+    this->usersArray.push_back(newUser);
+  }
 }
 
 void UserRepository::deleteUser(int id) {
@@ -25,6 +25,7 @@ void UserRepository::deleteUser(int id) {
       return;
     }
   }
+
   throw std::runtime_error("User does not exist");
 }
 

@@ -64,7 +64,7 @@ test: $(TEST_TARGETS)
 #
 $(TEST_BINDIR)/%: $(TEST_BINDIR)/%.o $(filter-out $(BUILDDIR)/server.o,$(OBJS))
 	@mkdir -p $(dir $@)
-	$(CXX) $(CXXFLAGS) -lgtest -lgtest_main $^ -o $@
+	$(CXX) $(CXXFLAGS) -lgmock -lgtest -lgtest_main $^ -o $@
 
 # Compiling for tests
 $(TEST_BINDIR)/%.o: $(TESTDIR)/%.cc

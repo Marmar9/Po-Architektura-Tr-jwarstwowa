@@ -1,4 +1,4 @@
-#include "../../src/controllers/GetUsersController.hpp"
+#include "../../src/controllers/DeleteUserController.hpp"
 #include "gmock/gmock.h"
 #include <gmock/gmock.h>
 #include <gtest/gtest.h>
@@ -7,7 +7,6 @@
 class MockUserRepository : public UserRepository {
 public:
   MOCK_METHOD0(UserRepository, void());
-
   MOCK_METHOD1(deleteUser, void(int));
   MOCK_METHOD1(addUser, void(const User &));
   MOCK_METHOD2(updateUser, void(int, const User &));
@@ -15,30 +14,27 @@ public:
   MOCK_CONST_METHOD0(getUsers, std::vector<User>());
 };
 
-class TestGetUsersController : public ::testing::Test {
+class TestDeleteUserController : public ::testing::Test {
 protected:
-  TestGetUsersController()
+  TestDeleteUserController()
       : controller(std::make_shared<MockUserRepository>()){};
 
   void SetUp() override {
     repository = std::make_shared<MockUserRepository>();
 
-    EXPECT_CALL(*repository, getUsers()).Times(1);
+    EXPECT_CALL(*repository, deleteUser(1)).Times(1);
 
-    controller = GetUsersController(repository);
+    controller = DeleteUserController(repository);
   }
 
   void TearDown() override {
     ::testing::Mock::VerifyAndClearExpectations(repository.get());
   }
   std::shared_ptr<MockUserRepository> repository;
-  GetUsersController controller;
+  DeleteUserController controller;
 };
 
-TEST_F(TestGetUsersController, GetUsers) {
-
-  ASSERT_EQ(controller.getUsers().size(), 1);
-}
+TEST_F(TestDeleteUserController, DeleteUser) { controller.deleteUser(1); }
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
